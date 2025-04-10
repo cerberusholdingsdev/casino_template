@@ -1,18 +1,17 @@
 import {
-    SidebarGroup,
+    SidebarGroup, SidebarGroupContent,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem
 } from "@/components/ui/sidebar";
-import {clsx} from "clsx";
 import NextLink from "next/link";
 import {ComponentProps} from "react";
 import {cn} from "@/lib/utils/shadcn";
-import {TNavigationData} from "@/lib/config/navigation";
+import {TSiteConfig} from "@/lib/config/site";
 
 type NavAuthProps = {
     open?: boolean;
-    data: TNavigationData["auth"]
+    data: TSiteConfig["auth"]
 } & ComponentProps<typeof SidebarMenu>
 
 export function NavAuth(
@@ -24,8 +23,12 @@ export function NavAuth(
     }: NavAuthProps) {
 
     return (
-        <SidebarGroup className={clsx("pl-2.5 transition-discrete duration-200", open && "px-6")}>
-            <SidebarMenu className={cn(["gap-2", className])} {...props}>
+        <SidebarGroup className={
+            cn("pl-2.5 transition-discrete duration-200",
+                open && "px-6")}>
+            <SidebarMenu className={
+                cn(["gap-2", className])}
+                         {...props}>
                 {
                     data?.map((item, index) => (
                         <SidebarMenuItem  key={index}>
@@ -38,7 +41,7 @@ export function NavAuth(
                                 asChild>
                                 <NextLink href={item.href}>
                                     <item.icon/>
-                                    <span className={clsx(!open && "hidden transition-all duration-300")}>
+                                    <span className={cn(!open && "hidden transition-all duration-300")}>
                                         {item.label}
                                     </span>
                                 </NextLink>

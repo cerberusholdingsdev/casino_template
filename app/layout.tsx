@@ -4,6 +4,8 @@ import "./globals.css";
 import {AppSidebar, SidebarProvider, SidebarInset} from "@/components/app-sidebar";
 import {FlexBox} from "@/components/custom-ui/flex-box";
 import {AppProviders} from "@/components/app-providers";
+import {AppBottomBar} from "@/components/app-bottom-bar";
+import {AppNavbar} from "@/components/app-navbar";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -28,16 +30,19 @@ export default async function RootLayout(
     }>) {
     return (
         <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen  h-fit h-full  antialiased`}>
+
         <AppProviders>
             <SidebarProvider>
+                <AppNavbar className="h-14"/>
                 <AppSidebar className="hidden md:flex"/>
-                <FlexBox className="max-w-full min-w-0">
-                    <SidebarInset className="w-full py-6 px-4 lg:p-6">
+                <FlexBox className="min-w-0 pt-14 pb-20 md:p-0">
+                    <SidebarInset className="w-full py-6 px-4 lg:p-6 max-w-7xl mx-auto">
                         {children}
                     </SidebarInset>
-                    <footer className="h-52 w-full "/>
+                    {/*<footer className="h-52 w-full "/>*/}
                 </FlexBox>
+                <AppBottomBar className="h-20"/>
             </SidebarProvider>
         </AppProviders>
         </body>

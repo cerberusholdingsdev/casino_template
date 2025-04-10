@@ -1,39 +1,54 @@
 import NextImage, {ImageProps} from "next/image";
-import {ComponentProps, ReactNode} from "react";
-import {Image} from "@/components/custom-ui/image";
 import {cn} from "@/lib/utils/shadcn";
 
-type LogoProps = ComponentProps<typeof Image>;
+export interface IImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 'height'> {
+    src?: ImageProps["src"];
+    alt?: string;
+    width?: number | `${number}`;
+    height?: number | `${number}`;
+}
 
-export function Logo({wrapperClassName,className,...props}: LogoProps) {
+export function Logo(
+    {
+        className,
+        src,
+        height,
+        width,
+        alt,
+        ...props
+    }: IImageProps) {
     return (
-        <Image priority
-               showSkeleton={false}
-               as={NextImage}
-               wrapperClassName={cn("w-full",wrapperClassName)}
-               fill
-               className={cn("object-center",className)}
-               objectFit={"contain"}
-               src={"/logo.png"}
-               alt={"logo"}
-               {...props}/>
+        <NextImage priority
+                   width={height || 80}
+                   height={height || 30}
+                   className={cn("object-center object-contain w-20 h-[1.875rem]", className)}
+                   objectFit={"contain"}
+                   src={src || "/logo.png"}
+                   alt={alt || "logo"}
+                   {...props}/>
     )
 
 }
 
 
-export function LogoMobile({wrapperClassName,className,...props}: LogoProps): ReactNode {
+export function LogoMobile(
+    {
+        className,
+        src,
+        height,
+        width,
+        alt,
+        ...props
+    }:IImageProps) {
     return (
-        <Image priority
-               showSkeleton={false}
-               wrapperClassName={cn("w-full",wrapperClassName)}
-               as={NextImage}
-               fill
-               className={cn("object-center",className)}
-               objectFit={"contain"}
-               {...props}
-               src={"/logo-mobile.png"}
-               alt={"logo mobile"}/>
+        <NextImage priority
+                   width={height || 30}
+                   height={height || 30}
+                   className={cn("object-center object-contain size-[1.875rem]", className)}
+                   objectFit={"contain"}
+                   src={src || "/logo-mobile.png"}
+                   alt={alt || "logo"}
+                   {...props}/>
     )
 }
 

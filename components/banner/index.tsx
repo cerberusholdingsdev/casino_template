@@ -43,7 +43,7 @@ export async function Banner({}: BannerProps) {
                          space={"lg"}
                          align={"center"}
                          className="max-w-md xl:max-w-lg  px-14 py-6  lg:pt-16 lg:items-start lg:pb-24">
-                    <Logo wrapperClassName={"!h-[28px] block md:hidden"}/>
+                    <Logo className={"block md:hidden"}/>
                     {
                         data.title && (
                             <HighlightText text={data.title.text}

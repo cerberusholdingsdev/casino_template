@@ -84,11 +84,11 @@
     --chart-5: oklch(0.769 0.188 70.08);
     --sidebar: var(--tailwind-colors-slate-950);
     --sidebar-foreground: var(--tailwind-colors-base-white);
-    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary: var(--tailwind-colors-slate-900);
     --sidebar-primary-foreground: oklch(0.985 0 0);
     --sidebar-accent: var(--tailwind-colors-slate-800);
     --sidebar-accent-foreground: var(--tailwind-colors-base-white);
-    --sidebar-border: var(--tailwind-colors-slate-950);
+    --sidebar-border: var(--tailwind-colors-slate-900);
     --sidebar-ring: oklch(0.708 0 0);
 }
 

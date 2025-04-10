@@ -42,7 +42,7 @@ export function SectionScrollSkeleton(
                     {
                         Array.from({length})?.map((_, index) => (
                             <CarouselItem
-                                className="w-44 max-w-44 px-3 touch-pan-x scroll-smooth scrollbar-none"
+                                className="w-[8.5rem] max-w-[8.5rem] md:w-44 md:max-w-44 px-3 touch-pan-x scroll-smooth scrollbar-none"
                                 key={index}>
                                 <Card className="h-full w-full p-0 gap-2.5 bg-transparent">
                                      <AspectRatio

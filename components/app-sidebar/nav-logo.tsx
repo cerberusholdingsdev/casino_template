@@ -1,8 +1,6 @@
 import NextLink from "next/link";
-import {clsx} from "clsx";
-import {Image} from "@/components/custom-ui/image";
-import NextImage from "next/image";
 import {cn} from "@/lib/utils/shadcn";
+import {Logo,LogoMobile} from "@/components/logo";
 
 type LogoIconProps = {
     open?: boolean;
@@ -15,35 +13,38 @@ type LogoIconProps = {
 export function NavLogo(
     {
         open,
-        logo="/logo.png",
-        mobileLogo="/logo-mobile.png",
-        altMobile="mobile logo",
-        alt="logo",
-    }:LogoIconProps) {
+        logo = "/logo.png",
+        mobileLogo = "/logo-mobile.png",
+        altMobile = "mobile logo",
+        alt = "logo",
+    }: LogoIconProps) {
 
-    const className = clsx([
-        "flex flex-nowrap max-h-16 w-full !h-[4.5rem]",
-    ])
+
     return (
-        <NextLink className={className} href={"/"}>
-            <Image showSkeleton={false}
-                   priority
-                   as={NextImage}
-                   wrapperClassName={cn("transition-discrete duration-300 w-0", !open && "w-11")}
-                   fill
-                   className={cn("object-center",className)}
-                   objectFit={"contain"}
-                   src={mobileLogo}
-                   alt={altMobile}/>
-            <Image showSkeleton={false}
-                   priority
-                   as={NextImage}
-                   wrapperClassName={cn("transition-discrete duration-300 w-0",open && "w-full")}
-                   fill
-                   className={cn("object-center",className)}
-                   objectFit={"contain"}
-                   src={logo}
-                   alt={alt}/>
+        <NextLink className={cn([
+            "flex flex-nowrap max-h-[4.5rem] w-[6.875rem] m-auto  !h-[4.5rem] items-center w-full justify-center",
+        ])} href={"/"}>
+            <LogoMobile
+                height={32}
+                width={32}
+                priority
+                className={cn([
+                    "transition-discrete duration-100  object-center !size-8",
+                    open && "!w-0",
+                ])}
+                src={mobileLogo}
+                alt={altMobile}/>
+            <Logo
+                width={110}
+                height={40}
+                priority
+                className={cn([
+                    "transition-discrete duration-100  object-center !w-[6.875rem] !h-10",
+                    !open && "!w-0",
+                ])}
+                src={logo}
+                alt={alt}/>
+
         </NextLink>
 
 

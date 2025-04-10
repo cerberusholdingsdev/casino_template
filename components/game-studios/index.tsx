@@ -5,7 +5,6 @@ import {
     CarouselContent,
     CarouselItem,
 } from "@/components/custom-ui/carousel"
-import {AnimatedSectionScrolling} from "@/components/custom-ui/animated-section-scrolling";
 
 interface IGameStudioItem {
     id: string | number;
@@ -19,8 +18,7 @@ interface GameStudioProps {
 export function GameStudios({}: GameStudioProps) {
     const data:IGameStudioItem[] = dataGameStudios
     return (
-        <AnimatedSectionScrolling className="flex flex-col justify-center h-16">
-            {<Carousel autoScroll className="max-w-full">
+            <Carousel autoScroll className="max-w-full">
                 <CarouselContent>
                     {
                         [...data, ...data].map((i, index) => (
@@ -30,8 +28,7 @@ export function GameStudios({}: GameStudioProps) {
                         ))
                     }
                 </CarouselContent>
-            </Carousel>}
-        </AnimatedSectionScrolling>
+            </Carousel>
 
     )
 }

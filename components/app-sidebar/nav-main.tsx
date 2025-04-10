@@ -1,6 +1,6 @@
 "use client"
 
-import {TNavigationData} from "@/lib/config/navigation";
+import {TSiteConfig} from "@/lib/config/site";
 import {SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem} from "@/components/ui/sidebar";
 import NextLink from "next/link";
 import {ComponentProps} from "react";
@@ -10,7 +10,7 @@ import {cn} from "@/lib/utils/shadcn";
 
 type NavMainProps = {
     open?: boolean;
-    data:TNavigationData["main"]
+    data:TSiteConfig["main"]
 } & ComponentProps<typeof SidebarMenu>
 
 export function NavMain({open,data, className, ...props}: NavMainProps) {

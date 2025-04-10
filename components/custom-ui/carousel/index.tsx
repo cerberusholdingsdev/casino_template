@@ -85,7 +85,7 @@ function Carousel(
             ...autoPlayPlugin,
             ...autoScrollPlugin,
             WheelGesturesPlugin({
-                ...gesturesOptions
+                ...gesturesOptions,
             }),
         ]
     }, [autoScroll, autoplay, isIntersecting])

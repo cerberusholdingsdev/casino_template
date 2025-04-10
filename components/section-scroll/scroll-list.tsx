@@ -43,7 +43,7 @@ export function ScrollList(
     return (
         <div className="flex flex-col gap-6">
             {
-               ( label || link) && (
+                (label || link) && (
                     <div className="flex flex-row gap-8 items-center">
                         {label && <Text as={"h3"} weight={"semibold"}
                                         size={"lg"}>
@@ -66,28 +66,30 @@ export function ScrollList(
                     {
                         [...data, ...data]?.map((item, index) => (
                             <CarouselItem
-                                className="w-44 max-w-44 px-3 touch-pan-x scroll-smooth scrollbar-none"
+                                className="w-[8.5rem] max-w-[8.5rem] md:w-44 md:max-w-44 px-3 touch-pan-x scroll-smooth scrollbar-none group"
                                 key={index}>
-                            <Card className="h-full w-full p-0 gap-2.5 bg-transparent">
-                                    {item.image && <AspectRatio
-                                        className="w-full relative bg-transparent"
-                                        ratio={imageRatio}>
-                                        <Image fill
-                                               hoverZoom
-                                               rounded={"lg"}
-                                               wrapperClassName={"absolute inset-0"}
-                                               className={"object-cover"}
-                                               as={NextImage}
-                                               src={item.image.src}
-                                               alt={item.image.alt}/>
-                                    </AspectRatio>}
-                                    <CardContent className="p-0">
-                                        <CardTitle
-                                            className="text-card-secondary text-sm  font-normal overflow-hidden text-nowrap text-ellipsis">
-                                            {item.title}
-                                        </CardTitle>
-                                    </CardContent>
-                                </Card>
+                                <NextLink href={"/"}>
+                                    <Card className="h-full w-full p-0 gap-2.5 bg-transparent">
+                                        {item.image && <AspectRatio
+                                            className="w-full relative bg-transparent"
+                                            ratio={imageRatio}>
+                                            <Image fill
+                                                   hoverZoom
+                                                   rounded={"lg"}
+                                                   wrapperClassName={"absolute inset-0"}
+                                                   className={"object-cover"}
+                                                   as={NextImage}
+                                                   src={item.image.src}
+                                                   alt={item.image.alt}/>
+                                        </AspectRatio>}
+                                        <CardContent className="p-0">
+                                            <CardTitle
+                                                className="text-card-secondary text-sm  font-normal overflow-hidden text-nowrap text-ellipsis">
+                                                {item.title}
+                                            </CardTitle>
+                                        </CardContent>
+                                    </Card>
+                                </NextLink>
                             </CarouselItem>
                         ))
                     }
